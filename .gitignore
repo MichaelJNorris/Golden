@@ -1,0 +1,7 @@
+# ignore auto generated files
+__pycache__
+.DS_Store
+*.swp
+
+# explicitly untrack
+__untracked__/*
