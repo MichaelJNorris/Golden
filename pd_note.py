@@ -54,8 +54,8 @@ def pd_phi_note(ratios,notes_per_phi):
 #X connect 9 0 10 0;
 #X connect 10 0 1 0;'''+'\n')
 
-BP_ratios = [BP_note(n) for n in range(-21,21)] # 7 notes per phi
+BP_ratios = [BP_note(n) for n in range(7)] # 7 notes per phi
 
-phint6_ratios = [phint6_note(n) for n in range(-24,24)] # 6 notes per phi
+Phint6_ratios = [Phint6_note(n) for n in range(6)] # 6 notes per phi
 
        

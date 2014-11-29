@@ -207,7 +207,7 @@ def BP_note(N):
                  ]
     return BP_ratios[N%7]*(phi**(N//7))
     
-def phint6_note(N):
+def Phint6_note(N):
     """
     6-note per phi scale on int*phi+int
     Interesting scale for pure tone synthesis and ring modulation.
