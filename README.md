@@ -13,5 +13,5 @@ This python class was originally written for exploring the properties of inharmo
 A simple non-recursive fibonacci function, plus some functions for exploring Zeckendorf sets.
 
 ## pd_note.py
-Writes a PureData patch that implements produces frequencies in a phi-based scale given a note number. Just a utility for experiments - not very smart or general.
+Writes a PureData patch that calculates frequencies in a phi-based scale given a note number. Just a utility for experiments - not very smart or general.
 
