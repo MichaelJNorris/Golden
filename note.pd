@@ -1,0 +1,27 @@
+#N canvas 561 144 547 262 10;
+#X obj 60 -166 inlet n;
+#X obj 71 57 outlet note;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array \$0-scale 20 float 3;
+#A 0 1 1.09286 1.35715 1.52857 1.75715 1.88572 2 2 2 2 2 2 2 2 2 2
+2 2 2 2;
+#X coords 0 2 20 1 200 140 1 0 0;
+#X restore 285 -109 graph;
+#X obj 158 -47 tabread \$0-scale;
+#X obj 158 -72 % 7;
+#X obj 60 -142 t f f;
+#X obj 39 -47 expr (1+sqrt(5))/2;
+#X obj 39 -70 loadbang;
+#X obj 24 -94 div 7;
+#X obj 24 -16 expr pow($f2 \, $f1);
+#X obj 71 32 *;
+#X connect 0 0 5 0;
+#X connect 3 0 10 1;
+#X connect 4 0 3 0;
+#X connect 5 0 8 0;
+#X connect 5 1 4 0;
+#X connect 6 0 9 1;
+#X connect 7 0 6 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 1 0;
