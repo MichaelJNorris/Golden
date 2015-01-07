@@ -38,3 +38,28 @@ def fib_set(x):
     
 def zeckendorf(x):
     return set([fibonacci(f) for f in fib_set(x)])
+    
+def Fib8_note(N):
+    """
+    8-note per phi Fibonacci scale - lowest note is zero, returns Hz
+    """
+    K = (N//8)+9
+    B = [int(x) for x in list('{0:0b}'.format(8+N%8))][1:]
+    return fibonacci(K) + \
+            B[0]*fibonacci(K-3) + \
+            B[1]*fibonacci(K-5 + B[0]) + \
+            B[2]*fibonacci(K-7 + B[0] + B[1]) 
+            
+def Fib16_note(N):
+    """
+    16-note per phi Fibonacci scale - lowest note is zero, returns Hz
+    """
+    K = (N//16)+9
+    B = [int(x) for x in list('{0:0b}'.format(16+N%16))][1:]
+    return fibonacci(K) + \
+            B[0]*fibonacci(K-3) + \
+            B[1]*fibonacci(K-5 + B[0]) + \
+            B[2]*fibonacci(K-7 + B[0] + B[1]) + \
+            B[3]*fibonacci(K-9 + B[0] + B[1] + B[2]) 
+            
+    

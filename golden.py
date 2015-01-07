@@ -97,7 +97,6 @@ class Golden(Fraction):
             if isinstance(a, numbers.Rational):
                 return Golden( b._phis, a + b._ones)
         return NotImplemented
-
     __add__, __radd__ = _operator_fallbacks(_add, operator.add)
 
     def _sub(a, b):
@@ -111,7 +110,6 @@ class Golden(Fraction):
             if isinstance(a, numbers.Rational):
                 return Golden(b._phis, a - b._ones)
         return NotImplemented
-
     __sub__, __rsub__ = _operator_fallbacks(_sub, operator.sub)
 
     def _mul(a, b):
@@ -129,11 +127,10 @@ class Golden(Fraction):
             if isinstance(a, numbers.Rational):
                 return Golden(a * b._phis, a * b._ones)
         return NotImplemented
-
     __mul__, __rmul__ = _operator_fallbacks(_mul, operator.mul)
 
     def _eq(a, b):
-        """a * b"""
+        """a == b"""
         if isinstance(a,Golden):
             if isinstance(b,Golden):
                 return (a._ones == b._ones) & (a._phis == b._phis)
@@ -143,8 +140,17 @@ class Golden(Fraction):
             if isinstance(a, numbers.Rational):
                 return (b._ones == a) & (b._phis == 0)
         return NotImplemented
+    __eq__, __req__ = _operator_fallbacks(_eq, operator.eq)
 
-    __eq__, __eq__ = _operator_fallbacks(_eq, operator.eq)
+    def _gt(a, b):
+        """a > b"""
+        return float(a) > float(b)
+    __gt__, __rgt__ = _operator_fallbacks(_gt, operator.gt)
+    
+    def _lt(a, b):
+        """a < b"""
+        return float(a) < float(b)
+    __lt__, __rlt__ = _operator_fallbacks(_lt, operator.lt)
 
     def invert(a):
         denom =    (a._ones * a._ones) \
@@ -166,7 +172,6 @@ class Golden(Fraction):
             if isinstance(a, numbers.Rational):
                 return a * b.invert()
         return NotImplemented
-
     __truediv__, __rtruediv__ = _operator_fallbacks(_truediv, operator.truediv)
      
     def __abs__(a):
@@ -192,34 +197,3 @@ class Golden(Fraction):
                 return Golden(0,1)/a.__pow__(abs(N))
 
 phi = Golden(1)
-
-def BP_note(N):
-    """
-    Bohlen-Pierce scale ratios
-    """
-    BP_ratios = [Golden(0, 1),
-                 Golden(Fraction(1,2),Fraction(1,4)),
-                 Golden(-3, 6),
-                 Golden(2, -2),
-                 Golden(Fraction(1,2),Fraction(1,2)),
-                 Golden(Fraction(2,3),Fraction(1,3)),
-                 Golden(-4, 8)
-                 ]
-    return BP_ratios[N%7]*(phi**(N//7))
-    
-def Phint6_note(N):
-    """
-    6-note per phi scale on int*phi+int
-    Interesting scale for pure tone synthesis and ring modulation.
-    Has more sums and differences within scale than Bohlen-Pierce,
-    though fewer integer ratios, so sounds pleasantly musical if only
-    within-scale frequencies are used, but gets very noisy if any
-    harmonics are added.
-    """
-    phint_ratios = [Golden(0, 1),\
-        Golden(26, -41), \
-        Golden(-3, 6), \
-        Golden(2, -2), \
-        Golden(-1, 3), \
-        Golden(4, -5)]
-    return phint_ratios[N%6]*(phi**(N//6))

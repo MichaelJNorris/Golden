@@ -1,0 +1,12 @@
+#N canvas 440 150 1100 380 10;
+#X obj 90 30 loadbang;
+#X msg 90 50 2 \, 3 \, 4 \, 5 \, 6;
+#X obj 90 260 write_ro_array;
+#X obj 90 320 outlet array_spec;
+#X obj 20 30 inlet bang;
+#X obj 90 290 any;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 4 0 5 0;
+#X connect 5 0 3 0;
